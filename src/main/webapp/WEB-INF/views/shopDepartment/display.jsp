@@ -31,8 +31,8 @@
 						${shopDepartment.name}
 					</td>
 					<td class="editNsaveBtn">
-						<a class="btn btn-warning center-block btn-responsive" onClick="toggleShopDepartmnt4Edit(${shopDepartment.id})">
-							<spring:message code="form.submitBtn.edit" /></a>
+						<button class="btn btn-warning center-block btn-responsive" onClick="toggleShopDepartmnt4Edit(${shopDepartment.id})">
+							<spring:message code="form.submitBtn.edit" /></button>
 					</td>
 					<td class="cancelNremoveBtn">
 						<button class="btn btn-danger center-block btn-responsive" onClick="requestToRemoveSimply(${shopDepartment.id})">

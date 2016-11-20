@@ -1,76 +1,80 @@
-<!DOCTYPE html>
 <%@ include file="../header_taglibs.jsp"%>
 <html>
-
 <head>
-	<%@ include file="../header_js_n_css.jsp"%>
-    <script src="<c:url value='/resources/javascript/shoppingNote/shoppingNoteEditMainFunc.js' />"></script>
-	<script>
-		$(document).ready(function() {
-	   			   $.datepicker.setDefaults($.datepicker.regional[$("#locale").val()]);
-		});
-	</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<%@ include file="../header_js_n_css.jsp"%>
+<script src="<c:url value='/resources/javascript/shoppingList/shopListEditMainFunc.js' />"></script>
+<style>
+</style>
+<title><spring:message code="product.form.title.display" /></title>
 </head>
 <body>
-	<%@ include file="../menu.jsp"%>
+<%@ include file="../_bodyStart.jsp"%>
 
-	<div class="generic-container">
-		<h1>${titleAction}</h1>
-
-		<form:form method="POST" modelAttribute="shoppingNote">
-			<div class="panel-default">
-				<form:hidden path="id" />
-				
-				<spring:bind path="name">
-					<div class="row form-group ${status.error ? 'has-error' : ''}">
-						<label class="col-sm-2 control-label"><spring:message
-								code="shopNote.form.title.name" /></label>
-						<div class="col-sm-2">
-							<form:input path="name" type="text" class="form-control"
-								id="name" />
-							<form:errors path="name" class="control-label" />
+<div class="generic-container">
+	<h2><spring:message code="product.form.title.display" /></h2>
+	${success}
+	<form>
+	<table id="userDisplayTable" class="display responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+				<th><spring:message code="product.form.title.name" /></th>
+				<th class="col-sm-1"><spring:message code="product.form.title.quantity" /></th>
+				<th class="col-sm-1"><spring:message code="unit.form.title.name" /></th>
+				<th><spring:message code="product.form.title.shopDepartment.name" /></th>
+				<th><spring:message code="shopList.form.title.comment" /></th>
+				<th class="col-sm-1"></th>
+				<th class="col-sm-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+			<c:forEach items="${shoppingList}" var="shoppingListRow" varStatus="index">
+				<tr id="tr${shoppingListRow.id}">
+					<td class="productName">
+						${shoppingListRow.productName}
+					</td>
+					<td class="quantity">
+						${shoppingListRow.quantity}
+					</td>
+					<td class="unit">
+						unit
+					</td>					
+					<td class="shopDepartment">
+						${shoppingListRow.shopDepartment}
+					</td>
+					<td class="comment">
+						${shoppingListRow.comment}
+					</td>
+					<td class="editNsaveBtn">
+						<div class="read">
+							<a class="btn btn-warning center-block btn-responsive"
+							   onClick="toggleProduct4edit(${product.id})">
+								<spring:message code="form.submitBtn.edit" />
+							</a>
 						</div>
-						<input type="hidden" id="name.jserror"
-							value="<spring:message code="shopNote.form.validator.name" />" />
-					</div>
-				</spring:bind>
-
-				<spring:bind path="dateStart">
-					<div class="row form-group ${status.error ? 'has-error' : ''}">
-						<label class="col-sm-2 control-label"><spring:message
-								code="shopNote.form.title.dateStart" /></label>
-						<div class="col-sm-2">
-							<form:input path="dateStart" type="text" class="form-control"
-								id="dateStart" />
-							<form:errors path="dateStart" class="control-label" />
+					</td>
+					<td>
+						<div class="write">
+							<a class="btn btn-success center-block btn-responsive"
+							   onClick="savePropductA(${product.id})">
+								<spring:message code="form.submitBtn.save" />
+							</a>
 						</div>
-						<input type="hidden" id="dateStart.jserror"
-							value="<spring:message code="shopNote.form.validator.dateStart" />" />
-					</div>
-				</spring:bind>
-
-				<spring:bind path="dateEnd">
-					<div class="row form-group ${status.error ? 'has-error' : ''}">
-						<label class="col-sm-2 control-label"><spring:message
-								code="shopNote.form.title.dateEnd" /></label>
-						<div class="col-sm-2">
-							<form:input path="dateEnd" type="text" class="form-control"
-								id="dateEnd" />
-							<form:errors path="dateEnd" class="control-label" />
-						</div>
-						<input type="hidden" id="dateEnd.jserror"
-							value="<spring:message code="shopNote.form.validator.dateEnd" />" />
-					</div>
-				</spring:bind>
-
-			</div>
-			<input type="hidden" name="dateFormat" id="dateFormat" value="s" />
-			<input type="button" value="${submitBtn}"
-				onClick="submitShopNoteAddForm(this.form)"
-				class="btn btn-success custom-width" />
-		</form:form>
+					</td>
+				</tr>
+			</c:forEach>
+        </tbody>
+    </table>
+    </form>
+	<div class="seperatePaddingDatatable">
+		<a id="addRow" class="btn btn-success custom-width">
+			<spring:message code="form.submitBtn.add" />
+		</a>
 	</div>
-	<input type="hidden" id="locale" value="${currentLocale}" />
-</body>
 
+<div id="ajaxRecall"></div>
+</div>
+<%@ include file="../_bodyEnd.jsp"%>
 </html>

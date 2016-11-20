@@ -38,3 +38,6 @@
 
 
 <script	src="<%=request.getContextPath()%>/resources/javascript/generals.js"></script>
+
+<link rel="stylesheet"href="<%=request.getContextPath()%>/resources/css/autosuggestion/autosuggest_inquisitor.css" type="text/css" media="screen" charset="utf-8" />
+<script language="javascript" type="application/javascript" charset="utf-8"  src="<%=request.getContextPath()%>/resources/javascript/AutoSuggest_2_1_3.js"></script>

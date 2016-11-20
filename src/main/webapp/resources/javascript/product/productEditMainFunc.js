@@ -1,18 +1,29 @@
 mustNotBeEmptyObj = [ "name", "shopDepartment" ];
-usrToggleTds = ["name", "shopDepartment", "editNsaveBtn", "cancelNremoveBtn"];// check for dependencies in case of reordering
+usrToggleTds = ["name", "shopDepartment", "unit", "editNsaveBtn", "cancelNremoveBtn"];// check for dependencies in case of reordering
 
 function toggleProduct(id){
 	toggleElements(id, usrToggleTds);	
 }
 
+function toggleHtml2SelectElem(id, className){
+	htmlValue = $("#tr"+id+" ."+ className +" div:nth-child(1)").html();
+    selectorIdenifier = "#tr"+ id +" ."+ className +" div:nth-child(2) select";
+    $(selectorIdenifier).val(
+			$(selectorIdenifier + " option").filter(
+					function () {
+						return $(this).html() == htmlValue; 
+					}).val())
+}
+
+function toggleSelectElem2Html(id, className){
+	selectorIdenifier = "#tr"+id+" ."+ className +" div:nth-child(2) select"
+	$( "#tr"+id+" ."+ className +" div:nth-child(1)" ).html($(selectorIdenifier+" option:selected").text());
+	return $(selectorIdenifier).val();
+}
+
 function toggleProduct4edit(id){
-	shopDepartment = $("#tr"+id+" ."+usrToggleTds[1]+" div:nth-child(1)").html();
-    selectorShopDepartment = "#tr"+id+" ."+usrToggleTds[1]+" div:nth-child(2) select";
-    $(selectorShopDepartment).val(
-    							$(selectorShopDepartment + " option").filter(
-    									function () {
-    										return $(this).html() == shopDepartment; 
-    									}).val())
+	toggleHtml2SelectElem(id, usrToggleTds[1])
+    toggleHtml2SelectElem(id, usrToggleTds[2])
     toggleElements(id, usrToggleTds);
 }
 
@@ -20,11 +31,11 @@ function savePropductA(id){
 	name = $( "#tr"+id+" .name div:nth-child(2) input:nth-child(1)" ).val();
 	$( "#tr"+id+" .name div:nth-child(1)" ).html(name);
 	
-	shopDepartmentObjSelector = "#tr"+id+" .shopDepartment div:nth-child(2) select"
-	$( "#tr"+id+" .shopDepartment div:nth-child(1)" ).html($(shopDepartmentObjSelector+" option:selected").text());
-	shopDepartmentId = $(shopDepartmentObjSelector).val();
+	shopDepartmentId = toggleSelectElem2Html(id, usrToggleTds[1]);
 	
-	data = {"id" : id, "name" : name, "shopDepartment":{"id": shopDepartmentId}};
+	unitId = toggleSelectElem2Html(id, usrToggleTds[2]);
+	
+	data = {"id" : id, "name" : name, "shopDepartment":{"id": shopDepartmentId}, "unit":{"id": unitId}};
 	
 	requestToSaveSimply(id, data, function(){ toggleProduct(id) });
 }

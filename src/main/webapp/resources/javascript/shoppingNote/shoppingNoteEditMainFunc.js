@@ -67,7 +67,7 @@ function saveShoppingNoteA(id) {
 
 
 function browseShoppingNote(id){
-	$.redirect('../shoppingList/display-' + id, {}, "GET");
+	$.redirect('../shoppingList/display/' + id, {}, "GET");
 }
 
 function addDatePicker(){

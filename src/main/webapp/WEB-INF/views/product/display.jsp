@@ -22,13 +22,14 @@
 			<tr>
 				<th><spring:message code="product.form.title.name" /></th>
 				<th><spring:message code="product.form.title.shopDepartment.name" /></th>
+				<th><spring:message code="unit.form.title.name" /></th>
 				<th class="col-sm-1"></th>
 				<th class="col-sm-1"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${products}" var="product" varStatus="index">
-				<tr id="tr${product.id}">
+				<tr id="tr${product.prodDepartUnitId}">
 					<td class="name">
 						<div class="read">${product.name}</div>
 						<div class="write">
@@ -41,7 +42,7 @@
 						</div>
 					</td>
 					<td class="shopDepartment">
-						<div class="read">${product.shopDepartment.name}</div>
+						<div class="read">${product.shopDepName}</div>
 						<div class="write">
 							<form:select id="products[${index.index}].shopDepartment.id" path="shopDeparts" class="form-control"
 								style="text-overflow: ellipsis; control-label">
@@ -49,30 +50,39 @@
 							</form:select>
 						</div>
 					</td>
+					<td class="unit">
+						<div class="read">${product.unitName}</div>
+						<div class="write">
+							<form:select id="products[${index.index}].unit.id" path="units" class="form-control"
+								style="text-overflow: ellipsis; control-label">
+								<form:options items="${units}" itemLabel="name" itemValue="id" />
+							</form:select>
+						</div>
+					</td>
 					<td class="editNsaveBtn">
 						<div class="read">
-							<a class="btn btn-warning center-block btn-responsive"
-							   onClick="toggleProduct4edit(${product.id})">
+							<button  class="btn btn-warning center-block btn-responsive"
+							   onClick="toggleProduct4edit(${product.prodDepartUnitId})">
 								<spring:message code="form.submitBtn.edit" />
-							</a>
+							</button>
 						</div>
 						<div class="write">
-							<a class="btn btn-success center-block btn-responsive"
-							   onClick="savePropductA(${product.id})">
+							<button  class="btn btn-success center-block btn-responsive"
+							   onClick="savePropductA(${product.prodDepartUnitId})">
 								<spring:message code="form.submitBtn.save" />
-							</a>
+							</button>
 						</div>
 					</td>
 					<td class="cancelNremoveBtn">
 						<div class="read">
 							<button class="btn btn-danger center-block btn-responsive"
-								onClick="requestToRemoveSimply(${product.id})">
+								onClick="requestToRemoveSimply(${product.prodDepartUnitId})">
 								<spring:message code="form.submitBtn.delete" />
 							</button>
 						</div>
 						<div class="write">
 							<button class="btn btn-warning center-block btn-responsive"
-								onClick="toggleProduct(${product.id})">
+								onClick="toggleProduct(${product.prodDepartUnitId})">
 								<spring:message code="form.submitBtn.cancel" />
 							</button>
 						</div>

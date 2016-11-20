@@ -11,7 +11,7 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="com.iliasAtGit.helloMVC">
+	<logger name="com.iliasAtGit.shoppingListProject">
 		<level value="debug" />
 	</logger>
 

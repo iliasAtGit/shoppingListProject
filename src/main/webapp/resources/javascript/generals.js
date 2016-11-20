@@ -76,7 +76,7 @@ function requestToSaveSimply(id, data, funcToExecuteOnSuccess){
 	
 	$.ajax({
 		type : "POST",
-		url : "upateAjax-" + id,
+		url : "updateAjax-" + id,
 		data : JSON.stringify(data),
 		contentType : "application/json; charset=utf-8",
 	    dataType : "text json",
