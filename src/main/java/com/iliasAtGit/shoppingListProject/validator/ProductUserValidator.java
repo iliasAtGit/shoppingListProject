@@ -17,12 +17,13 @@ public class ProductUserValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, 
-												  "name", 
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+												  "name",
 												  "product.form.validator.name",
 												  "Please enter the Products name");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, 
-												  "shopDepartment.id", 
+
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+												  "id",
 												  "product.form.validator.shopDepartment",
 												  "Please select a Shop Department");
 

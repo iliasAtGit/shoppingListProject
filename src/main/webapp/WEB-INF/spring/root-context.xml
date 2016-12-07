@@ -17,7 +17,7 @@
 
 	<!-- Scans the classpath for annotated components that will be auto-registered 
 		as Spring beans -->
-	<context:component-scan base-package="com.iliasAtGit.helloMVC" />
+	<context:component-scan base-package="com.iliasAtGit.shoppingListProject" />
 	<!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
 	<context:annotation-config />
 
@@ -34,7 +34,7 @@
 	<!-- ?useUnicode=yes&amp;createDatabaseIfNotExist=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=UTF-8&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;setForceEncoding=true -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-		p:packagesToScan="com.iliasAtGit.helloMVC.model" p:dataSource-ref="dataSource">
+		p:packagesToScan="com.iliasAtGit.shoppingListProject.model" p:dataSource-ref="dataSource">
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="true" />

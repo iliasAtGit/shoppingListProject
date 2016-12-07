@@ -1,6 +1,9 @@
 <%@ include file="../header_taglibs.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authentication var="principal" property="principal" />
 <html>
 <head>
+<sec:csrfMetaTags/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

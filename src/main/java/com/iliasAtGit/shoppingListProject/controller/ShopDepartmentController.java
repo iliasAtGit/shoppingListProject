@@ -1,5 +1,7 @@
 package com.iliasAtGit.shoppingListProject.controller;
 
+import java.security.Principal;
+
 import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 
@@ -7,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iliasAtGit.shoppingListProject.exception.InvalidRequestException;
 import com.iliasAtGit.shoppingListProject.model.ShopDepartment;
+import com.iliasAtGit.shoppingListProject.model.User;
+import com.iliasAtGit.shoppingListProject.service.CustomSecurityUser;
 import com.iliasAtGit.shoppingListProject.service.ShopDepartmentService;
 import com.iliasAtGit.shoppingListProject.validator.ShopDepartmentValidator;
 
@@ -50,9 +55,10 @@ public class ShopDepartmentController {
 
 	@RequestMapping(value = { "/addForm" }, method = RequestMethod.POST)
 	public ModelAndView create(@Valid ShopDepartment shopDepartment,
-			BindingResult result,
-			ModelAndView modelAndView,
-			RedirectAttributes redir) {
+							   BindingResult result,
+							   ModelAndView modelAndView,
+							   RedirectAttributes redir,
+							   Principal principal) {
 
 		shopDepartmentValidator.validate(shopDepartment, result);
 		if (result.hasErrors())
@@ -61,15 +67,21 @@ public class ShopDepartmentController {
 		String resultCallBack = null;
 
 		try {
+
+			CustomSecurityUser customSecurityUser = (CustomSecurityUser) ((Authentication) principal).getPrincipal();
+			User user = new User();
+			user.setId(customSecurityUser.getId());
+
+			shopDepartment.setCreatedBy(user);
 			shopDepartmentService.save(shopDepartment);
 		} catch (DataIntegrityViolationException dive) {
-			resultCallBack = Utils.filterException(logger, dive, dive.getRootCause().toString());
+			 resultCallBack = Utils.filterException(logger, dive, dive.getRootCause().toString());
 		} catch(PersistenceException pe){
-			resultCallBack = Utils.filterException(logger, pe, pe.getCause().getCause().toString());
-		} catch (Exception e) {
+	        resultCallBack = Utils.filterException(logger, pe, pe.getCause().getCause().toString());
+	    } catch (Exception e) {
 			logger.error(e.getMessage());
 			resultCallBack = "An exception occured";
-		} finally {
+	    } finally {
 			if (resultCallBack != null) {
 				modelAndView.addObject("result", resultCallBack);
 				modelAndView.addObject("resultClass", "has-error");
@@ -77,7 +89,7 @@ public class ShopDepartmentController {
 			} else {
 				modelAndView = new ModelAndView("redirect:display");
 			}
-		}
+		 }
 
 		return modelAndView;
 	}
@@ -92,8 +104,8 @@ public class ShopDepartmentController {
 		} catch (DataIntegrityViolationException dive) {
 			resultCallBack = Utils.filterException(logger, dive, dive.getRootCause().toString());
 		} catch(PersistenceException pe){
-			resultCallBack = Utils.filterException(logger, pe, pe.getCause().getCause().toString());
-		} catch (Exception e) {
+	       	resultCallBack = Utils.filterException(logger, pe, pe.getCause().getCause().toString());
+        } catch (Exception e) {
 			logger.error(e.getMessage());
 			resultCallBack = "A generic exception occured";
 		} finally {
@@ -108,8 +120,9 @@ public class ShopDepartmentController {
 	@RequestMapping(value = { "/updateAjax-{id}" }, method=RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String editAjax(@PathVariable String id,
-			@Valid @RequestBody ShopDepartment shopDepartment,
-			BindingResult bindingResult) {
+			               @Valid @RequestBody ShopDepartment shopDepartment,
+						   BindingResult bindingResult,
+						   Principal principal) {
 
 		shopDepartmentValidator.validate(shopDepartment, bindingResult);
 
@@ -120,12 +133,17 @@ public class ShopDepartmentController {
 		String resultCallBack = "success";
 
 		try {
+			CustomSecurityUser customSecurityUser = (CustomSecurityUser) ((Authentication) principal).getPrincipal();
+			User user = new User();
+			user.setId(customSecurityUser.getId());
+
+			shopDepartment.setCreatedBy(user);
 			shopDepartmentService.update(shopDepartment);
 		} catch (DataIntegrityViolationException dive) {
-			resultCallBack = Utils.filterException(logger, dive, dive.getRootCause().toString());
+			 resultCallBack = Utils.filterException(logger, dive, dive.getRootCause().toString());
 		} catch(PersistenceException pe){
 			resultCallBack = Utils.filterException(logger, pe, pe.getCause().getCause().toString());
-		} catch (Exception e) {
+        } catch (Exception e) {
 			logger.error(e.getMessage());
 			resultCallBack = "A generic exception occured";
 		} finally {

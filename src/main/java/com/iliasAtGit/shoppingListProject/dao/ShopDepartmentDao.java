@@ -13,7 +13,9 @@ import com.iliasAtGit.shoppingListProject.model.ShopDepartment;
 
 @Repository
 public class ShopDepartmentDao extends GenericDao {
-
+/*	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	CustomSecurityUser customUser = (CustomSecurityUser)auth.getPrincipal();
+	Long userId = customUser.getId();*/
 	@PersistenceContext
 	private EntityManager em;
 

@@ -22,6 +22,7 @@ public class User {
 	private String passwordConfirm;
 	private Set<Role> roles;
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {

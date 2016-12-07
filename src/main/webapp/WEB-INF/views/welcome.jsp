@@ -1,4 +1,6 @@
 <%@ include file="header_taglibs.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authentication var="principal" property="principal" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
 <div class="container">
 	<div class="row">
 	    <h2>
-		    <div style="float:left; width:auto;">Welcome ${pageContext.request.userPrincipal.getUserId()}</div>
+		    <div style="float:left; width:auto;">Welcome ${principal.username}</div>
 		    <div style="float:left; width:auto;">&nbsp;|&nbsp;</div>
 		    <div style="float:left; width:auto;"><a href="<c:url value='/admin/registration' />">Your last actions</a></div>
 	    </h2>
