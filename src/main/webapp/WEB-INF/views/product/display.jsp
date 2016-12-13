@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <%@ include file="../header_js_n_css.jsp"%>
-<script src="<c:url value='/resources/javascript/product/productEditMainFunc.js' />"></script>
-<style>
-</style>
+<script src="<c:url value='/resources/javascript/product/productDisplay.js' />"></script>
 <title><spring:message code="product.form.title.display" /></title>
 </head>
 <body>

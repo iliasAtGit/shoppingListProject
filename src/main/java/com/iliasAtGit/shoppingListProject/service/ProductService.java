@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iliasAtGit.shoppingListProject.dao.ProductDao;
-import com.iliasAtGit.shoppingListProject.dao.custom.DisplayForUserProductList;
+import com.iliasAtGit.shoppingListProject.dao.custom.ProductForUser;
 import com.iliasAtGit.shoppingListProject.model.Product;
 
 @Service
 public class ProductService {
 
-	// We use Spring’s @Autowired annotation to have ProductDao component be
+	// We use Springï¿½s @Autowired annotation to have ProductDao component be
 	// dependency injected.
 	@Autowired
 	private ProductDao productDao;
@@ -60,7 +60,7 @@ public class ProductService {
 		return productDao.findAll();
 	}
 	@Transactional(readOnly = true)
-	public List<DisplayForUserProductList> findAll4User() {
+	public List<ProductForUser> findAll4User() {
 		return productDao.findAll4User();
 	}
 }

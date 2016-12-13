@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iliasAtGit.shoppingListProject.dao.ShopDepartmentDao;
 import com.iliasAtGit.shoppingListProject.dao.UnitDao;
-import com.iliasAtGit.shoppingListProject.dao.custom.DisplayForUserProductList;
+import com.iliasAtGit.shoppingListProject.dao.custom.ProductForUser;
 import com.iliasAtGit.shoppingListProject.model.Product;
 import com.iliasAtGit.shoppingListProject.model.Unit;
 
 @Service
 public class UnitService {
 
-	// We use Spring’s @Autowired annotation to have ProductDao component be
+	// We use Springï¿½s @Autowired annotation to have ProductDao component be
 	// dependency injected.
 	@Autowired
 	private UnitDao unitDao;

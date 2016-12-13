@@ -14,7 +14,7 @@
 <script	src="<%=request.getContextPath()%>/resources/libs/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 <script	src="<%=request.getContextPath()%>/resources/libs/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/responsive/1.0.7/css/responsive.dataTables.min.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/responsive/css/responsive-buttons.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/responsive/css/buttons/responsive-buttons.css"/>
 
 <!--  <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>

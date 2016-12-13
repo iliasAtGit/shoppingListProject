@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.iliasAtGit.shoppingListProject.dao.custom.ProductForUser;
 import com.iliasAtGit.shoppingListProject.exception.InvalidRequestException;
 import com.iliasAtGit.shoppingListProject.model.Product;
 import com.iliasAtGit.shoppingListProject.model.User;
@@ -70,7 +71,7 @@ public class ProductController {
 
 	@RequestMapping(value = { "/addForm" }, method = RequestMethod.GET)
 	public ModelAndView addForm(ModelAndView modelAndView, HttpServletRequest request) {
-		modelAndView.addObject("product", new Product());
+		modelAndView.addObject("product", new ProductForUser());
 		modelAndView.addObject("shopDeparts", shopDepartmentService.findAll());
 		modelAndView.addObject("units", unitService.findAll());
 		return modelAndView;

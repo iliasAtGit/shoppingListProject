@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import com.iliasAtGit.shoppingListProject.dao.custom.DisplayForUserProductList;
+import com.iliasAtGit.shoppingListProject.dao.custom.ProductForUser;
 import com.iliasAtGit.shoppingListProject.model.Product;
 
 @Repository
@@ -46,7 +46,7 @@ public class ProductDao extends GenericDao {
 		return em.createQuery("SELECT p FROM Product p").getResultList();
 	}
 	
-	public List<DisplayForUserProductList> findAll4User() {
-		return em.createNamedQuery("findProdAllVisible4userDisplay", DisplayForUserProductList.class).getResultList();
+	public List<ProductForUser> findAll4User() {
+		return em.createNamedQuery("findProdAllVisible4userDisplay", ProductForUser.class).getResultList();
 	}
 }

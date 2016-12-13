@@ -22,7 +22,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "findProdAllVisible4userDisplay",
-			query = "SELECT NEW com.iliasAtGit.shoppingListProject.dao.custom.DisplayForUserProductList "
+			query = "SELECT NEW com.iliasAtGit.shoppingListProject.dao.custom.ProductForUser "
 					+	"(p.id, p.name, sd.id, sd.name, u.id, u.name, pd.id, pdu.id) "
 					+ "FROM "
 					+	"Product p "
