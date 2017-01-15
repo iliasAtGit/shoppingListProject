@@ -1,8 +1,13 @@
 package com.iliasAtGit.shoppingListProject.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import com.iliasAtGit.shoppingListProject.model.User;
@@ -30,4 +35,16 @@ public class UserDao extends GenericDao {// extends JpaRepository<User, Short> {
 	public User findByUsername(String username) {
 		return em.find(User.class, username);
 	}
+
+	@SuppressWarnings("unchecked")
+    public List<User> findAllUsers() {
+        Criteria criteria = null;
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).addOrder(Order.asc("username"));//To avoid duplicates.
+        List<User> users = criteria.list();
+
+        for(User user : users){
+            Hibernate.initialize(user.getRoles());
+        }
+        return users;
+    }
 }

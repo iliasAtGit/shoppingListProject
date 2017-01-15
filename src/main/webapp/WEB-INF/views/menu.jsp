@@ -90,6 +90,13 @@
 	                          </a>
 	                      </li>                       
 	                  </ul>
+	                  <ul class="dropdown-menu">
+                          <li>
+                              <a href="<c:url value='/admin/usertest' />">
+                                usertest
+                              </a>
+                          </li>                       
+                      </ul>
                   </li>
                 </c:if>
 					

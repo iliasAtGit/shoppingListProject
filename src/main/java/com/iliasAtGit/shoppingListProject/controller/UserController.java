@@ -32,7 +32,7 @@ public class UserController {
 
 		return "admin/registration";
 	}
-
+	//-------------------Create a User--------------------------------------------------------
 	@RequestMapping(value = "/admin/registration", method = RequestMethod.POST)
 	public String registration(@ModelAttribute("userForm") User userForm,
 			BindingResult bindingResult,Model model) {
@@ -64,4 +64,8 @@ public class UserController {
 	public String welcome(Model model, HttpServletRequest request) {
 		return "welcome";
 	}
+	@RequestMapping(value = "/admin/usertest", method = RequestMethod.GET)
+    public String getIndexPage() {
+        return "admin/user/UserManagement";
+    }
 }

@@ -4,6 +4,7 @@ package com.iliasAtGit.shoppingListProject.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -20,6 +23,7 @@ public class User {
 	private String username;
 	private String password;
 	private String passwordConfirm;
+	private String email;
 	private Set<Role> roles;
 
 
@@ -58,8 +62,19 @@ public class User {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@NotEmpty
+    @ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role",
+	           joinColumns = @JoinColumn(name = "user_id"),
+	           inverseJoinColumns = @JoinColumn(name = "role_id"))
 	public Set<Role> getRoles() {
 		return roles;
 	}
