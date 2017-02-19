@@ -21,7 +21,7 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function($http, $
                 deferred.resolve(response.data);
             },
             function(errResponse){
-                console.error('Error while fetching Users');
+                console.error('Error while fetching Users1');
                 deferred.reject(errResponse);
             }
         );

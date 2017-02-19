@@ -81,6 +81,7 @@
                               <th>ID.</th>
                               <th>Name</th>
                               <th>Email</th>
+                              <th>Roles</th>
                               <th width="20%"></th>
                           </tr>
                       </thead>
@@ -89,6 +90,9 @@
                               <td><span ng-bind="u.id"></span></td>
                               <td><span ng-bind="u.username"></span></td>
                               <td><span ng-bind="u.email"></span></td>
+                              <td><ul class="list-unstyled" ng-repeat="role in u.roles">
+                                    <li ng-bind="role"></li>
+                                    </ul></td>
                               <td>
                               <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>

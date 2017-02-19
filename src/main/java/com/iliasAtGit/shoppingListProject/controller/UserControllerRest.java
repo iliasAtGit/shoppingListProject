@@ -1,6 +1,7 @@
 package com.iliasAtGit.shoppingListProject.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.iliasAtGit.shoppingListProject.model.Role;
 import com.iliasAtGit.shoppingListProject.model.User;
 import com.iliasAtGit.shoppingListProject.service.UserService;
 
@@ -29,9 +31,12 @@ public class UserControllerRest {
     @RequestMapping(value = "/admin/user/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
         List<User> users = userService.findAll();
+        Set<Role> f = users.get(0).getRoles();
         if(users.isEmpty()){
+        	 System.out.println("User isEmpty");
             return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
+
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
 

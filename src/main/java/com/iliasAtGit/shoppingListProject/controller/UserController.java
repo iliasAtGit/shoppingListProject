@@ -64,6 +64,7 @@ public class UserController {
 	public String welcome(Model model, HttpServletRequest request) {
 		return "welcome";
 	}
+
 	@RequestMapping(value = "/admin/usertest", method = RequestMethod.GET)
     public String getIndexPage() {
         return "admin/user/UserManagement";

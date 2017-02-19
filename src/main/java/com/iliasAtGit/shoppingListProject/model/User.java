@@ -16,6 +16,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -75,6 +77,7 @@ public class User {
 	@JoinTable(name = "user_role",
 	           joinColumns = @JoinColumn(name = "user_id"),
 	           inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JsonManagedReference
 	public Set<Role> getRoles() {
 		return roles;
 	}
