@@ -21,7 +21,7 @@
 
 		<div class="collapse navbar-collapse"
 			 id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown">
 				    <a aria-expanded="false"
 					   aria-haspopup="true"
@@ -29,12 +29,16 @@
                        data-toggle="dropdown"
 					   class="dropdown-toggle"
                        href="#">
-                       Product
+                       <spring:message code="menu.title.product" text="default text" />
                        <span class="caret"></span>
                     </a>
 					<ul class="dropdown-menu">
-						<li><a href="<c:url value='/product/addForm' />">Add</a></li>
-						<li><a href="<c:url value='/product/display' />">Display</a></li>
+						<li><a href="<c:url value='/product/addForm' />">
+                            <spring:message code="form.submitBtn.add" text="default text" />
+                        </a></li>
+						<li><a href="<c:url value='/product/display' />">
+                            <spring:message code="menu.action.display" text="default text" />
+                        </a></li>
 					</ul>
 				</li>
 
@@ -45,35 +49,65 @@
                        data-toggle="dropdown"
                        class="dropdown-toggle"
                        href="#">
-                       Shop Department
+                       <spring:message code="menu.title.shopDepartment" text="default text" />
                        <span class="caret"></span>
                     </a>
 					<ul class="dropdown-menu">
-						<li><a href="<c:url value='/shopDepartment/addForm' />">Add</a></li>
-						<li><a href="<c:url value='/shopDepartment/display' />">Display All</a></li>
-					</ul>
-				</li>
-
-				<li class="dropdown">
-                    <a aria-expanded="false"
-                       aria-haspopup="true"
-                       role="button"
-                       data-toggle="dropdown"
-                       class="dropdown-toggle"
-                       href="#">
-                       ShoppingNote
-                       <span class="caret"></span>
-                    </a>
-					<ul class="dropdown-menu">
-						<li><a href="<c:url value='/shoppingNote/addForm' />">Add</a></li>
-						<li><a href="<c:url value='/shoppingNote/dispActive' />">Display Active</a></li>
-						<li><a href="<c:url value='/shoppingNote/display' />">Display All</a></li>
+						<li><a href="<c:url value='/shopDepartment/addForm' />">
+                            <spring:message code="form.submitBtn.add" text="default text" />
+                        </a></li>
+						<li><a href="<c:url value='/shopDepartment/display' />">
+                            <spring:message code="menu.action.displayAll" text="default text" />
+                        </a></li>
 					</ul>
 				</li>
 				
+                <li class="dropdown">
+                    <a aria-expanded="false"
+                       aria-haspopup="true"
+                       role="button"
+                       data-toggle="dropdown"
+                       class="dropdown-toggle"
+                       href="#">
+                       <spring:message code="menu.title.measurementUnit" text="default text" />
+                       <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<c:url value='/measurementUnit/addForm' />">
+                            <spring:message code="form.submitBtn.add" text="default text" />
+                        </a></li>
+                        <li><a href="<c:url value='/measurementUnit/display' />">
+                            <spring:message code="menu.action.displayAll" text="default text" />
+                        </a></li>
+                    </ul>
+                </li>
+
+				<li class="dropdown">
+                    <a aria-expanded="false"
+                       aria-haspopup="true"
+                       role="button"
+                       data-toggle="dropdown"
+                       class="dropdown-toggle"
+                       href="#">
+                       <spring:message code="menu.title.shoppingNote" text="default text" />
+                       <span class="caret"></span>
+                    </a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value='/shoppingNote/addForm' />">
+                            <spring:message code="form.submitBtn.add" text="default text" />
+                        </a></li>
+						<li><a href="<c:url value='/shoppingNote/dispActive' />">
+                            <spring:message code="menu.action.displayCurrent" text="default text" />
+                        </a></li>
+						<li><a href="<c:url value='/shoppingNote/display' />">
+                            <spring:message code="menu.action.display" text="default text" />
+                        </a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">	
 				<c:if test="<%=request.isUserInRole(\"ROLE_ADMIN\")%>">
-				  <li class="dropdown"
-				      style="position:absolute; right:120px;">
+				  <li class="dropdown">
                       <a aria-expanded="false"
 	                     aria-haspopup="true"
 	                     role="button"
@@ -81,41 +115,31 @@
 	                     class="dropdown-toggle"
 	                     href="#">
 	                     <span class="glyphicon glyphicon-king"></span>
-	                     Admin Area	                       
+	                     <spring:message code="menu.title.adminArea" />                      
 	                  </a>
 	                  <ul class="dropdown-menu">
 	                      <li>
 	                          <a href="<c:url value='/admin/registration' />">
-                                Create an account
+                                <spring:message code="menu.admin.addAccount" />                               
 	                          </a>
 	                      </li>                       
-	                  </ul>
-	                  <ul class="dropdown-menu">
                           <li>
                               <a href="<c:url value='/admin/usertest' />">
-                                usertest
+                                <spring:message code="menu.admin.manageAccount" />  
                               </a>
                           </li>                       
                       </ul>
                   </li>
                 </c:if>
 					
-              <li class="dropdown"
-                  style="position:absolute; right:20px;">
+              <li class="dropdown pull-right">
 	              <a role="button"
 	                 onclick="document.forms['logoutForm'].submit()">
 		              <span class="glyphicon glyphicon-log-out"></span>
-		              Logout
+		              <spring:message code="menu.action.logout" />
 	              </a>
               </li>
 			</ul>
 		</div>
 	</div>
 </nav>
-<!--
-<style>
-.dropdown:hover .dropdown-menu {
-	display: block;
-	margin-top: 0;
-}
-</style> -->
