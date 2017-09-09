@@ -39,7 +39,7 @@ function toggleShopDepartmnt4Edit( id ){
 }
 
 function saveShopDepartmentA(id){
-	data = {"id" : id, "name" : $.trim($( "#tr"+id+" .name input:nth-child(1)" ).val())};
+	var data = {"id" : id, "name" : $.trim($( "#tr"+id+" .name input:nth-child(1)" ).val())};
 	
 	requestToSaveSimply(id, data, function(){ toggleShopDepartmnt(id, true) });
 }
@@ -51,14 +51,15 @@ function submitShopDepAddForm(thisForm) {
 }
 
 $( document ).ready( function() {
-    $('#userDisplayTable').DataTable({
-    	"scrollY":        "500px",
-        "scrollCollapse": true,
-    	"paging":         false,
-    	"ordering":       false,
-    	"info":           false,
-    	"responsive":     true   	
-    });
+    var userDisplayTableProp = {
+        	"scrollY":        "500px",
+            "scrollCollapse": true,
+        	"paging":         false,
+        	"ordering":       false,
+        	"info":           false,
+        	"responsive":     true,        	
+        };
+	$('#userDisplayTable').DataTable($.extend(userDisplayTableProp, calc_lang_package()));
 } );
 
 $( document ).on( 'keyup', '.toUpperCase', function() {

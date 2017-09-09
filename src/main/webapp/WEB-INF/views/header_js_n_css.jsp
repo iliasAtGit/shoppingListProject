@@ -1,31 +1,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<c:set var = "resourcesLibsPath" value = "${pageContext.request.contextPath}/resources/libs"/>
 
+<script	src="${resourcesLibsPath}/jquery-1.12.2.min.js"></script>
+<script	src="${resourcesLibsPath}/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script	src="${resourcesLibsPath}/jquery-ui-1.11.4/jquery-ui-i18n.min.js"></script>
+<link rel="stylesheet" href="${resourcesLibsPath}/jquery-ui-1.11.4/jquery-ui.min.css"/>
 
-<script	src="<%=request.getContextPath()%>/resources/libs/jquery-1.12.2.min.js"></script>
-<script	src="<%=request.getContextPath()%>/resources/libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-<script	src="<%=request.getContextPath()%>/resources/libs/jquery-ui-1.11.4/jquery-ui-i18n.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/jquery-ui-1.11.4/jquery-ui.min.css"/>
+<c:set var = "datatablesVersion" scope="request" value = "1.10.12"/>
+<c:set var = "datatablesPath" scope="request" value = "${resourcesLibsPath}/datatables"/>
+<script	src="${datatablesPath}/${datatablesVersion}/js/jquery.dataTables.min.js"></script>
+<script	src="${datatablesPath}/${datatablesVersion}/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="${datatablesPath}/${datatablesVersion}/css/jquery.dataTables.min.css"/>
+<jsp:include page="../languageSelection.jsp"/>
 
-<script	src="<%=request.getContextPath()%>/resources/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-<script	src="<%=request.getContextPath()%>/resources/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/datatables/1.10.12/css/jquery.dataTables.min.css"/>
+<c:set var = "bootstrapAdminVersion" value = "1.0.4"/>
+<c:set var = "bootstrapAdminPath" value = "${resourcesLibsPath}/startbootstrap-sb-admin-${bootstrapAdminVersion}"/>
+<script	src="${resourcesLibsPath}/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+<script	src="${resourcesLibsPath}/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+<link rel="stylesheet" href="${resourcesLibsPath}/responsive/1.0.7/css/responsive.dataTables.min.css"/>
+<link rel="stylesheet" href="${resourcesLibsPath}/responsive/css/buttons/responsive-buttons.css"/>
 
-<script	src="<%=request.getContextPath()%>/resources/libs/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-<script	src="<%=request.getContextPath()%>/resources/libs/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/responsive/1.0.7/css/responsive.dataTables.min.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/responsive/css/buttons/responsive-buttons.css"/>
-
-<!--  <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" />-->
-
-
-<script	src="<%=request.getContextPath()%>/resources/libs/startbootstrap-sb-admin-1.0.4/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/startbootstrap-sb-admin-1.0.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/startbootstrap-sb-admin-1.0.4/css/sb-admin.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/libs/startbootstrap-sb-admin-1.0.4/font-awesome/css/font-awesome.min.css" />
+<script	src="${bootstrapAdminPath}/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${bootstrapAdminPath}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${bootstrapAdminPath}/css/sb-admin.css" />
+<link rel="stylesheet" href="${bootstrapAdminPath}/font-awesome/css/font-awesome.min.css" />
 
 <link rel="stylesheet"href="<%=request.getContextPath()%>/resources/css/bootsrapAdj.css">
 	
