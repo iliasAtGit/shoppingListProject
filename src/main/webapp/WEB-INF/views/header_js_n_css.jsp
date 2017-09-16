@@ -1,3 +1,7 @@
+<link rel="shortcut icon" href='<c:url value="/resources/images/favicon-shopping-cart.ico" />' type="image/x-icon" />
+<link rel="icon" href='<c:url value="/resources/images/favicon-shopping-cart.ico" />' type="image/x-icon" />
+<link rel="apple-touch-icon" href='<c:url value="/resources/images/favicon-shopping-cart.png" />' />
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <c:set var = "resourcesLibsPath" value = "${pageContext.request.contextPath}/resources/libs"/>
@@ -12,7 +16,7 @@
 <script	src="${datatablesPath}/${datatablesVersion}/js/jquery.dataTables.min.js"></script>
 <script	src="${datatablesPath}/${datatablesVersion}/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="${datatablesPath}/${datatablesVersion}/css/jquery.dataTables.min.css"/>
-<jsp:include page="../languageSelection.jsp"/>
+<jsp:include page="/WEB-INF/views/languageSelection.jsp"/>
 
 <c:set var = "bootstrapAdminVersion" value = "1.0.4"/>
 <c:set var = "bootstrapAdminPath" value = "${resourcesLibsPath}/startbootstrap-sb-admin-${bootstrapAdminVersion}"/>
