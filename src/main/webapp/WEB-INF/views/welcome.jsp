@@ -18,9 +18,15 @@
 <div class="container">
 	<div class="row">
 	    <h2>
-		    <div style="float:left; width:auto;">Welcome ${principal.username}</div>
+		    <div style="float:left; width:auto;">
+		      <spring:message code="welcomepage.welcome" text="default text" /> ${principal.username}
+		    </div>
 		    <div style="float:left; width:auto;">&nbsp;|&nbsp;</div>
-		    <div style="float:left; width:auto;"><a href="<c:url value='/admin/registration' />">Your last actions</a></div>
+		    <div style="float:left; width:auto;">
+		      <a href="<c:url value='/admin/registration' />">
+		          <spring:message code="welcomepage.lastActions" text="default text" />
+		      </a>
+		    </div>
 	    </h2>
 	</div>
 </div>
